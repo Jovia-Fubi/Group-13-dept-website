@@ -25,7 +25,14 @@
                 </div>
             </div>
             <div class="header-nav">
-                <ul class="nav-list">
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-list" id="navList">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li class="dropdown">
@@ -60,6 +67,55 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list" id="mobileNavList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="departments.html">Academic</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="departments.html">Schools & Departments</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="admissions.html">Admissions</a>
+                    <a href="timetable.html">Timetable</a>
+                </div>
+            </li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="research.html">Research</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="research.html">Research Overview</a>
+                    <a href="faculty-achievements.html">Faculty Achievements</a>
+                    <a href="publications.html">Publications</a>
+                </div>
+            </li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="news.html">News & Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="student-portal.html">Student Portal</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="student-portal.html">Student Portal</a>
+                    <a href="course-registration.html">Course Registration</a>
+                    <a href="downloadable-forms.html">Forms</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
     <main>
         <div class="container">
@@ -425,63 +481,6 @@
 </body>
 </html>
 
-    <script>
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(el);
-        });
-
-        // Counter animation for statistics
-        function animateCounter(element, target, duration = 2000) {
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + (element.textContent.includes('+') ? '+' : '');
-            }, 16);
-        }
-
-        // Trigger counter animations when visible
-        const statNumbers = document.querySelectorAll('.stat-number');
-        const counterObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.dataset.animated) {
-                    const text = entry.target.textContent;
-                    const number = parseFloat(text.replace(/[^0-9.]/g, ''));
-                    const suffix = text.replace(/[0-9.]/g, '');
-                    
-                    animateCounter(entry.target, number);
-                    entry.target.dataset.animated = 'true';
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statNumbers.forEach(stat => {
-            counterObserver.observe(stat);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

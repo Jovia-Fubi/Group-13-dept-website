@@ -22,7 +22,14 @@
                 </div>
             </div>
             <div class="header-nav">
-                <ul class="nav-list">
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-list" id="navList">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li class="dropdown">
@@ -58,6 +65,54 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list" id="mobileNavList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="departments.html">Academic</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="departments.html">Schools & Departments</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="admissions.html">Admissions</a>
+                    <a href="timetable.html">Timetable</a>
+                </div>
+            </li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="research.html">Research</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="research.html">Research Overview</a>
+                    <a href="faculty-achievements.html">Faculty Achievements</a>
+                    <a href="publications.html">Publications</a>
+                </div>
+            </li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="news.html">News & Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="student-portal.html">Student Portal</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="student-portal.html">Student Portal</a>
+                    <a href="course-registration.html">Course Registration</a>
+                    <a href="downloadable-forms.html">Forms</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
     <main>
         <div class="container">
@@ -273,5 +328,7 @@
             observer.observe(el);
         });
     </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>

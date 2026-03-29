@@ -17,6 +17,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Header Styles - Enhanced Dark Blue */
@@ -472,7 +475,7 @@ header {
 }
 
 .event-card {
-    display: flex;
+    display: grid;
     gap: 1.5rem;
     background: white;
     padding: 1.5rem;
@@ -1190,8 +1193,11 @@ nav {
 
 /* Main Content */
 main {
-    min-height: calc(100vh - 200px);
+    min-height: 100vh;
     padding: 2rem 0;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .section {
@@ -1200,6 +1206,9 @@ main {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .section h2 {
@@ -1394,8 +1403,179 @@ footer {
     font-size: 1.2rem;
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100%;
+    background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-drawer.active {
+    right: 0;
+}
+
+.mobile-nav-header {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-nav-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.mobile-nav-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-list > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-list a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: background 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.mobile-nav-list a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown {
+    position: relative;
+}
+
+.mobile-dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mobile-dropdown-toggle::after {
+    content: '+';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown.active .mobile-dropdown-toggle::after {
+    transform: rotate(45deg);
+}
+
+.mobile-dropdown-content {
+    display: none;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.mobile-dropdown.active .mobile-dropdown-content {
+    display: block;
+}
+
+.mobile-dropdown-content a {
+    padding-left: 2.5rem;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .header-nav .nav-list {
+        display: none !important;
+    }
+    
     .header-content {
         flex-direction: column;
         text-align: center;
@@ -1439,26 +1619,267 @@ footer {
         padding: 0;
     }
     
+    .hero-section-makerere h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-section-makerere p {
+        font-size: 1.1rem;
+    }
+    
     .container {
         padding: 0 1rem;
     }
     
-    .grid {
+    .quick-links-grid-makerere {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
     
-    .grid-2 {
-        grid-template-columns: 1fr;
+    .quick-link-item {
+        padding: 1.5rem;
     }
     
-    .card {
+    .news-grid-makerere {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .news-item {
         padding: 1.5rem;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .event-card {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .event-date {
+        align-self: center;
         margin-bottom: 1rem;
     }
     
+    .compact-footer .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .compact-footer .social-links {
+        justify-content: center;
+    }
+    
+    /* Enhanced Mobile Grid Systems */
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Enhanced Mobile Cards */
+    .card {
+        padding: 1rem !important;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+    }
+    
+    /* Enhanced Mobile Typography */
+    h1 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: 1.2rem !important;
+        line-height: 1.4;
+    }
+    
+    h4 {
+        font-size: 1.1rem !important;
+        line-height: 1.4;
+    }
+    
+    p {
+        font-size: 0.95rem !important;
+        line-height: 1.6;
+    }
+    
+    /* Enhanced Mobile Buttons */
+    .btn, .btn-primary, .btn-secondary {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+    
+    .btn-small {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* Enhanced Mobile Forms */
+    input, textarea, select {
+        width: 100% !important;
+        padding: 0.75rem !important;
+        font-size: 1rem !important;
+        margin: 0.5rem 0;
+        border-radius: 5px;
+    }
+    
+    /* Enhanced Mobile Images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 8px;
+    }
+    
+    .staff-image {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    /* Enhanced Mobile Navigation */
+    .mobile-nav-drawer {
+        width: 100% !important;
+        right: -100% !important;
+    }
+    
+    .mobile-nav-drawer.active {
+        right: 0 !important;
+    }
+    
+    /* Enhanced Mobile Spacing */
+    .mt-2 {
+        margin-top: 0.5rem !important;
+    }
+    
+    .mb-2 {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Enhanced Mobile Research Tags */
+    .research-tag {
+        display: inline-block !important;
+        margin: 0.25rem !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    /* Enhanced Mobile Faculty Profiles */
+    .faculty-profile {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 1rem !important;
+    }
+    
+    .faculty-header {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    /* Enhanced Mobile Theme Toggle */
+    .theme-toggle {
+        top: 10px !important;
+        right: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    /* Enhanced Mobile WhatsApp Float */
+    .whatsapp-float {
+        bottom: 15px !important;
+        right: 15px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Small Mobile Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    
     .section {
-        padding: 2rem 0;
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .card {
+        padding: 0.75rem !important;
+    }
+    
+    h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    h2 {
+        font-size: 1.4rem !important;
+    }
+    
+    h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    p {
+        font-size: 0.9rem !important;
+    }
+    
+    .btn, .btn-primary, .btn-secondary {
+        padding: 0.875rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .staff-image {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .theme-toggle {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    
+    .whatsapp-float {
+        width: 45px !important;
+        height: 45px !important;
     }
 }
 
@@ -1480,12 +1901,87 @@ footer {
         height: 50vh;
     }
     
+    .hero-section-makerere h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section-makerere p {
+        font-size: 1rem;
+    }
+    
+    .quick-links-section h2,
+    .featured-news-section h2,
+    .events-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .quick-link-item {
+        padding: 1rem;
+    }
+    
+    .quick-link-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .news-item {
+        padding: 1rem;
+    }
+    
+    .news-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .event-card {
+        padding: 0.8rem;
+    }
+    
+    .event-date {
+        min-width: 60px;
+        height: 60px;
+    }
+    
+    .event-date .day {
+        font-size: 1.5rem;
+    }
+    
+    .event-info h3 {
+        font-size: 1rem;
+    }
+    
+    .mobile-nav-drawer {
+        width: 100%;
+        right: -100%;
+    }
+    
     .card {
         padding: 1rem;
     }
     
     .section {
         padding: 1.5rem 0;
+    }
+    
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    .btn-primary-makerere,
+    .btn-secondary-makerere {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        margin: 0.25rem;
+    }
+    
+    .whatsapp-float a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .theme-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
 
@@ -1614,9 +2110,10 @@ li {
 }
 
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     animation: fadeIn 0.6s ease forwards;
+    animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
@@ -2964,4 +3461,33 @@ input:valid, select:valid {
         box-shadow: none;
         border: 1px solid #ddd;
     }
+}
+
+/* Ensure desktop navigation shows on larger screens */
+@media (min-width: 769px) {
+    .header-nav .nav-list {
+        display: flex !important;
+    }
+    
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Comprehensive Content Visibility Override */
+main, .container, .section, .card, .grid, .fade-in {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ensure body content is always visible */
+body {
+    overflow: visible !important;
+}
+
+/* Override any potential hiding styles */
+main * {
+    visibility: visible !important;
+    opacity: 1 !important;
 }

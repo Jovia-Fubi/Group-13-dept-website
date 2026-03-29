@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Test | Bugema University</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-info {
+            background: #f0f9ff;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #1e40af;
+        }
+        .test-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #1e40af;
+        }
+        .test-info p {
+            margin: 0;
+            color: #64748b;
+        }
+        .resize-hint {
+            background: #fef3c7;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon icon" id="themeIcon"></i>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="IMG/bu.png" alt="Bugema University Logo" class="logo">
+                <div class="header-text">
+                    <h1>Bugema University</h1>
+                    <p>Department of Computing and Informatics</p>
+                </div>
+            </div>
+            <div class="header-nav">
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-list" id="navList">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="departments.html">Academic</a>
+                        <div class="dropdown-content">
+                            <a href="departments.html">Schools & Departments</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="admissions.html">Admissions</a>
+                            <a href="timetable.html">Timetable</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <h3>Navigation</h3>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list" id="mobileNavList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-toggle">
+                    <a href="departments.html">Academic</a>
+                </div>
+                <div class="mobile-dropdown-content">
+                    <a href="departments.html">Schools & Departments</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="admissions.html">Admissions</a>
+                    <a href="timetable.html">Timetable</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <div class="resize-hint">
+            <h3>📱 Mobile Responsiveness Test</h3>
+            <p>Resize your browser window to test mobile functionality. Try the hamburger menu when width is below 768px.</p>
+        </div>
+
+        <div class="test-info">
+            <h3>✅ Features Implemented:</h3>
+            <p>• Hamburger menu appears on mobile devices (≤768px)</p>
+            <p>• Slide-out navigation drawer from the right</p>
+            <p>• Navigation state saved in localStorage</p>
+            <p>• Responsive grid layouts</p>
+            <p>• Mobile-optimized typography and spacing</p>
+            <p>• Touch-friendly buttons and interactions</p>
+        </div>
+
+        <div class="test-info">
+            <h3>🎯 Mobile Breakpoints:</h3>
+            <p>• <strong>Tablet:</strong> ≤768px - Hamburger menu appears</p>
+            <p>• <strong>Mobile:</strong> ≤480px - Full mobile optimization</p>
+            <p>• <strong>Small Mobile:</strong> ≤360px - Compact layout</p>
+        </div>
+
+        <section class="quick-links-section">
+            <div class="container">
+                <h2>Responsive Grid Test</h2>
+                <div class="quick-links-grid-makerere">
+                    <div class="quick-link-item">
+                        <h3>Test Card 1</h3>
+                        <p>This card should stack vertically on mobile devices.</p>
+                    </div>
+                    <div class="quick-link-item">
+                        <h3>Test Card 2</h3>
+                        <p>Grid layouts automatically adjust to screen size.</p>
+                    </div>
+                    <div class="quick-link-item">
+                        <h3>Test Card 3</h3>
+                        <p>Content remains readable and accessible.</p>
+                    </div>
+                    <div class="quick-link-item">
+                        <h3>Test Card 4</h3>
+                        <p>Touch targets are appropriately sized.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="compact-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bugema University</h3>
+                <p>Department of Computing and Informatics</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bugema University. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
